@@ -11,7 +11,7 @@ import { toast } from 'sonner';
 // 🔑 Remplace ces 3 valeurs par les tiennes depuis emailjs.com
 const EMAILJS_SERVICE_ID  = 'service_e1bzvk8';
 const EMAILJS_TEMPLATE_ID = 'template_34gny9l';
-const EMAILJS_PUBLIC_KEY  = 'Qg4NO8QWZhM_WiFUDwXR3';
+const EMAILJS_PUBLIC_KEY  = '_hVEgQvwTwUSyPH0v';
 
 export function Contact() {
   const [formData, setFormData] = useState({
