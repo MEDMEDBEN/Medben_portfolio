@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -6,6 +7,11 @@ import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
 import { Github, Linkedin, Mail, Phone, Send } from 'lucide-react';
 import { toast } from 'sonner';
+
+// 🔑 Remplace ces 3 valeurs par les tiennes depuis emailjs.com
+const EMAILJS_SERVICE_ID  = 'service_e1bzvk8';
+const EMAILJS_TEMPLATE_ID = 'template_34gny9l';
+const EMAILJS_PUBLIC_KEY  = 'Qg4NO8QWZhM_WiFUDwXR3';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -20,15 +26,34 @@ export function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulation d'envoi (remplacer par vraie API)
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name:    formData.name,
+          from_email:   formData.email,
+          subject:      formData.subject,
+          message:      formData.message,
+          to_name:      'Bennabi Mohamed',
+        },
+        EMAILJS_PUBLIC_KEY
+      );
 
-    toast.success('Message envoyé avec succès !', {
-      description: 'Je vous répondrai dans les plus brefs délais.',
-    });
+      toast.success('Message envoyé avec succès !', {
+        description: 'Je vous répondrai dans les plus brefs délais.',
+      });
 
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setIsSubmitting(false);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+
+    } catch (error) {
+      toast.error('Erreur lors de l\'envoi.', {
+        description: 'Veuillez réessayer ou me contacter directement par email.',
+      });
+      console.error('EmailJS error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (

@@ -11,7 +11,7 @@ export default defineConfig({
     tailwindcss(),
 
   ],
-  base: '/nom-du-repo/', 
+  base: '/Medben_portfolio/', 
   resolve: {
     alias: {
       // Alias @ to the src directory
