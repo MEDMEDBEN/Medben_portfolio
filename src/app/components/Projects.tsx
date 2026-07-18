@@ -4,6 +4,9 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import tahourImg from '@/assets/projects/tahour.png';
+import yamopsImg from '@/assets/projects/yamops-monitoring.png';
+import visualisationImg from '@/assets/projects/visualisation-waste.png';
 
 interface Project {
   title: string;
@@ -18,22 +21,113 @@ interface Project {
 const projects: Project[] = [
   {
     title: 'MyPrescription',
-    description: 'Application de gestion intelligente des prescriptions médicales',
+    description: 'Plateforme médicale complète pour cabinets et praticiens',
     longDescription:
-      'Système complet de gestion des prescriptions médicales avec IA pour la détection automatique de contre-indications et interactions médicamenteuses. Interface intuitive pour médecins et patients.',
-    technologies: ['React', 'TypeScript', 'Python', 'TensorFlow', 'PostgreSQL', 'Docker'],
+      "Écosystème de gestion de cabinet médical conforme RGPD/ANPDP : dossiers patients, ordonnances, rendez-vous, facturation et assistant IA. Architecture polyrepo — application web (Next.js), API REST (Bun / Express / PostgreSQL), application desktop offline-first (Electron), application mobile (React Native) et chatbot IA (FastAPI / LangChain).",
+    technologies: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Bun',
+      'Express',
+      'PostgreSQL',
+      'Electron',
+      'React Native',
+      'FastAPI',
+      'LangChain',
+    ],
     image: 'https://images.unsplash.com/photo-1758691461916-dc7894eb8f94?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZWRpY2FsJTIwcHJlc2NyaXB0aW9uJTIwdGVjaG5vbG9neXxlbnwxfHx8fDE3NzQwNzkzODR8MA&ixlib=rb-4.1.0&q=80&w=1080',
     color: 'border-blue-500/20',
+    links: [
+      {
+        label: 'GitHub',
+        url: 'https://github.com/myprescription2026',
+        icon: <Github className="h-4 w-4" />,
+      },
+    ],
+  },
+  {
+    title: 'Tahour (طاهور)',
+    description: 'Super-app de la pharmacie algérienne',
+    longDescription:
+      "Application mobile pour trouver et réserver des médicaments en officine, localiser les pharmacies de garde et conventionnées Chifa, et envoyer une photo d'ordonnance aux pharmacies proches pour vérifier la disponibilité en temps réel. Interface bilingue français / arabe avec support RTL complet et animation de matching signature.",
+    technologies: ['Expo', 'React Native', 'TypeScript', 'Zustand', 'Reanimated 3', 'Expo Router', 'i18next'],
+    image: tahourImg,
+    color: 'border-emerald-500/20',
+    links: [
+      {
+        label: 'GitHub',
+        url: 'https://github.com/MEDMEDBEN/Tahour',
+        icon: <Github className="h-4 w-4" />,
+      },
+    ],
+  },
+  {
+    title: 'YamOps — Monitoring Dashboard',
+    description: "Tableau de bord de supervision d'infrastructure en temps réel",
+    longDescription:
+      "Dashboard de supervision (SSR) pour piloter une infrastructure Docker en temps réel : état des conteneurs, pipeline de déploiement, CPU et mémoire par service, flux d'activité et suivi des incidents. Rendu côté serveur avec React 19, Express et Vite pour des performances optimales. Déployé en production pour superviser l'infrastructure MyPrescription.",
+    technologies: ['React 19', 'Express 5', 'Vite', 'SSR', 'Node.js', 'Docker'],
+    image: yamopsImg,
+    color: 'border-cyan-500/20',
+    links: [
+      {
+        label: 'Voir le dashboard',
+        url: 'https://yamops.afaq.sa:8444/',
+        icon: <ExternalLink className="h-4 w-4" />,
+      },
+      {
+        label: 'GitHub',
+        url: 'https://github.com/MEDMEDBEN',
+        icon: <Github className="h-4 w-4" />,
+      },
+    ],
+  },
+  {
+    title: 'ISEO — Sécurité & Assistant IA',
+    description: "Site vitrine 3D immersif + assistant de vente IA multicanal",
+    longDescription:
+      "Écosystème digital complet pour ISEO (sécurité et serrurerie, 30 ans d'expertise en Algérie) : site vitrine haut de gamme Next.js avec expérience 3D interactive (Three.js / R3F, GSAP, scroll storytelling), catalogue produits et ~58 pages bilingues FR/AR. Couplé à un assistant de vente IA multicanal (WhatsApp, Telegram, Messenger) : RAG sur le catalogue, LLM configurable (Gemini / OpenAI / Groq), sécurité anti-injection et anti-spam intégrée.",
+    technologies: ['Next.js 15', 'React 19', 'Three.js', 'GSAP', 'Flask', 'RAG', 'LLM', 'TypeScript'],
+    image: 'https://images.unsplash.com/photo-1558002038-1055907df827?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    color: 'border-amber-500/20',
+    links: [
+      {
+        label: 'Voir le site',
+        url: 'https://iseo-site.vercel.app',
+        icon: <ExternalLink className="h-4 w-4" />,
+      },
+    ],
+  },
+  {
+    title: 'Data Viz — Déchets urbains',
+    description: 'Dashboard interactif de visualisation de données (D3.js)',
+    longDescription:
+      "Tableau de bord analytique pour explorer et visualiser des données environnementales sur la gestion des déchets (étude de cas : rivière Yamuna, Inde). Visualisations sur-mesure entièrement construites avec D3.js (dont diagrammes de Sankey), thème sombre glassmorphism, navigation multi-pages (analyse, solutions, interprétation).",
+    technologies: ['React 19', 'Vite', 'D3.js', 'd3-sankey', 'React Router'],
+    image: visualisationImg,
+    color: 'border-teal-500/20',
     links: [
       {
         label: 'GitHub',
         url: 'https://github.com/MEDMEDBEN',
         icon: <Github className="h-4 w-4" />,
       },
+    ],
+  },
+  {
+    title: 'Brain Tumor Classification',
+    description: 'Détection de tumeurs cérébrales par CNN et Machine Learning',
+    longDescription:
+      "Système de classification binaire de tumeurs cérébrales combinant deux approches : un CNN analysant directement les images IRM, et un modèle ML classant à partir de données patient (âge, symptômes). Architecture modulaire avec pipelines d'entraînement, serveur d'inférence FastAPI, interface Streamlit, conteneurisation Docker et intégration CI/CD Azure Pipelines.",
+    technologies: ['Python', 'TensorFlow', 'Keras', 'scikit-learn', 'FastAPI', 'Streamlit', 'Docker', 'Azure'],
+    image: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080',
+    color: 'border-rose-500/20',
+    links: [
       {
-        label: 'link',
-        url: 'https://myprescription.dz',
-        icon: <ExternalLink className="h-4 w-4" />,
+        label: 'GitHub',
+        url: 'https://github.com/MEDMEDBEN',
+        icon: <Github className="h-4 w-4" />,
       },
     ],
   },
